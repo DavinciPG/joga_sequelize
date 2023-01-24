@@ -20,6 +20,7 @@ sequelize
 
 const articleRouter = require('./routes/article');
 app.use('/', articleRouter);
+app.use('/article', articleRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
