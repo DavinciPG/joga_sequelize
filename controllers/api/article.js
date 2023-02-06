@@ -23,15 +23,14 @@ const getArticle = (req, res) => {
 				model: models.Author
 			},
 			{
-				model: models.Tags,
+				model: models.Tag,
 				through: {
-					model: models.ArticleTags
+					model: models.ArticleTag
 				}
 			}
 			],
 		})
 		.then(article => {
-			//console.log(article)
 			return res.status(200).json({ article });
 		})
 		.catch (error => {
@@ -40,18 +39,17 @@ const getArticle = (req, res) => {
 	} if(queryElement[0] === 'id') {
 		models.Article.findByPk(req.query.id, {
 		include: [{
-			model: models.Authors
+			model: models.Author
 		},
 		{
-			model: models.Tags,
+			model: models.Tag,
 			through: {
-				model: models.ArticleTags
+				model: models.ArticleTag
 			}
 		}
 		],
 	})
 	.then(article => {
-		console.log(article)
 		return res.status(200).json({ article });
 	})
 	.catch (error => {
