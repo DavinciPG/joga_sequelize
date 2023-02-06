@@ -26,6 +26,9 @@ app.use('/author', authorRouter);
 
 app.use('admin/article', articleRouter);
 
+const apiRouter = require('./routes/api');
+app.use('/api', apiRouter);
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
 });
